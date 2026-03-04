@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>品牌月刊典藏館</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>品牌月刊<span>Archive</span></h1>
+        <p>149 期的精彩沉澱，與您一同翻閱</p>
+    </header>
+
+    <main id="magazine-grid">
+        </main>
+
+    <script>
+        const totalIssues = 149;
+        const grid = document.getElementById('magazine-grid');
+
+        for (let i = totalIssues; i >= 1; i--) {
+            const item = document.createElement('div');
+            item.className = 'magazine-item';
+            item.innerHTML = `
+                <a href="viewer.html?issue=${i}">
+                    <img src="covers/${i}.jpg" alt="第 ${i} 期封面" loading="lazy">
+                    <p>第 ${i} 期</p>
+                </a>
+            `;
+            grid.appendChild(item);
+        }
+    </script>
+</body>
+</html>
