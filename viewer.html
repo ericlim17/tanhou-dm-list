@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>閱讀月刊</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dflip@1.0.1/css/dflip.min.css">
+</head>
+<body>
+
+    <div id="flipbook-container"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dflip@1.0.1/js/dflip.min.js"></script>
+    
+    <script>
+        // 從網址取得現在是哪一期 (例如 viewer.html?issue=149)
+        const urlParams = new URLSearchParams(window.location.search);
+        const issueNumber = urlParams.get('issue');
+        const pdfPath = `pdfs/${issueNumber}.pdf`;
+
+        const options = {
+            webgl: true,
+            duration: 800,
+            direction: 1, // 1 為左翻, 2 為右翻（依你們習慣設定）
+            height: '90vh',
+            enableDownload: false, // 保護內容不被隨便下載
+            zoom: 1 // 預設開啟縮放功能
+        };
+
+        // 啟動翻頁書
+        $("#flipbook-container").dfBflip(pdfPath, options);
+    </script>
+</body>
+</html>
